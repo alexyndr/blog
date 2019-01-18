@@ -1,3 +1,18 @@
+
+<% if @post.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= t('common.errors') %></h5> <!-- создадим в ru.yml блок common.errors и укажим перевод там -->
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+
+
 <%= form_for @post do |f| %>
 
     <div class="form-group">
@@ -16,8 +31,12 @@
     </div>
 
     <div class="form-group">
-      <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
-      <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
+      <%= f.submit t('.submit', action: @post.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
+      <!-- вызовем метод 't' ему передадим '.submit'(вложеность! перевода находиться ru.posts.form.submit) -->
+      <!-- укажим в качестве переменой наш 'action:' по адресу ru.posts.form.submit -->
+      <!-- СЛОЖНА -->
+      <!-- проверка 'if' @post.new_record? если 'true' тогда передать 'Создать', 'false'='Изменить' -->
+      <%= link_to t('common.back'), :back, class: 'btn btn-outline-secondary' %>
     </div>
 <% end %>
 
