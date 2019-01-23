@@ -1,4 +1,7 @@
 ru:
+  errors:
+    messages:
+      mini_magick_processing_error: 'дичь как всегда'
   common:
     errors: 'Возникли ошибки:'
     back: 'Назад'

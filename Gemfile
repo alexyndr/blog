@@ -26,6 +26,10 @@ gem 'bootstrap', '~> 4.2.1'
 
 gem 'jquery-rails'
 
+gem 'carrierwave', '~> 1.0'
+
+gem 'mini_magick'
+
 gem 'popper_js', '~> 1.14.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
