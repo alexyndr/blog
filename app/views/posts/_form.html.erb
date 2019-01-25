@@ -27,12 +27,22 @@
 
     <div class="form-group">
       <%= f.label :body %>
-      <%= f.text_area :body, class: 'form-control' %>
+      <%= f.trix_editor :body, class: 'editor' %>   <!-- Подключили редактоор РИКС -->
     </div>
 
     <div class="form-group">
+      <span class="input-group-btn">
+        <span class="btn btn-small btn-outline-primary btn-inverse" onclick="$(this).parent().find('input[type=file]').click();">Add picture</span>
+        <%= f.file_field :image, onchange: "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", style: "display: none;" %>
+      </span>
+    </div>
+
+    <!--
+    <div class="form-group">
       <%= f.file_field :image %>
-      <!--
+    </div>
+
+     ТИПО КНОПКА 2 (не рабочая)
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -42,8 +52,8 @@
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
       </div>
-      -->
-    </div>
+    -->
+
 
     <div class="form-group">
       <%= f.submit t('.submit', action: @post.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>

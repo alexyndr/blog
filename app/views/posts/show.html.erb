@@ -10,10 +10,12 @@
     </small>
   </section>
   <section class="post-body">
-    <%= @post.body %>
-  </section>
-  <section class="btn">
     <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
-    <%= link_to 'Назад', :back, class: 'btn btn-primary' %>
+    <div class='body-text'>
+      <%= @post.body.html_safe %>
+    </div>
+    <section class="btn">
+      <%= link_to 'Назад', :back, class: 'btn btn-primary' %>
+    </section>
   </section>
 </article>
